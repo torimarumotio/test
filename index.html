@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>カレー大好き</title>
+    <style>
+        h1 {
+            background: white;
+            padding: 0.5em;
+        }
+
+        h2 {
+            border-left: solid 7px white;
+            color: #2e7900;
+            padding-left: 5px;
+            margin: 100px;
+        }
+
+        #test {
+            color: blue;
+        }
+
+        .empha {
+            font-size: 5rem;
+            background-color: rgb(125, 100, 100);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="test">ボタンを実装してみた．見た目だけだから，特に意味はない</h1>
+    <p>期間は1/25~ 2/6の間ね</p>
+
+    <h2>アンケート</h2>
+    <form id="scheduleForm">
+        <!-- 日程選択 -->
+        <label for="date1"><input type="radio" name="schedule" id="date1" value="1/25"> 1月25日</label>
+        <label for="date2"><input type="radio" name="schedule" id="date2" value="1/26"> 1月26日</label>
+        <label for="date3"><input type="radio" name="schedule" id="date3" value="1/27"> 1月27日</label>
+        <!-- 他の日程も同様に追加 -->
+        <label for="date4"><input type="radio" name="schedule" id="date4" value="1/28"> 1月28日</label>
+        <label for="date5"><input type="radio" name="schedule" id="date5" value="1/29"> 1月29日</label>
+        <label for="date6"><input type="radio" name="schedule" id="date6" value="1/30"> 1月30日</label>
+        <label for="date7"><input type="radio" name="schedule" id="date7" value="1/31"> 1月31日</label><br>
+        <label for="date8"><input type="radio" name="schedule" id="date8" value="2/1"> 2月1日</label>
+        <label for="date9"><input type="radio" name="schedule" id="date9" value="2/2"> 2月2日</label>
+        <label for="date10"><input type="radio" name="schedule" id="date10" value="2/3"> 2月3日</label>
+        <label for="date11"><input type="radio" name="schedule" id="date11" value="2/4"> 2月4日</label>
+        <label for="date12"><input type="radio" name="schedule" id="date12" value="2/5"> 2月5日</label>
+        <label for="date13"><input type="radio" name="schedule" id="date13" value="2/6"> 2月6日</label><br>
+
+        <!-- 名前入力 -->
+        <label for="name">名前：</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <!-- 投票ボタン -->
+        <button type="button" onclick="submitForm()">アンケート送信</button>
+    </form>
+
+    <!-- 結果表示 -->
+    <div id="result" style="margin-top: 20px;"></div>
+
+    <script>
+        function submitForm() {
+            var selectedDate = document.querySelector('input[name="schedule"]:checked');
+            var nameInput = document.getElementById('name');
+
+            if (selectedDate && nameInput.value) {
+                var resultMessage = "選択された日程: " + selectedDate.value + "<br>投票者の名前: " + nameInput.value;
+
+                // ここでサーバーに選択された日程と名前を送信するなどの処理を追加できます
+
+                // 結果を表示
+                document.getElementById('result').innerHTML = resultMessage;
+            } else {
+                alert("日程と名前が正しく選択されていません");
+            }
+        }
+    </script>
+</body>
+
+</html>
